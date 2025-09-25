@@ -7,7 +7,7 @@ const Homee = () => {
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    axios.get("https://stock-trading-backend-pi.vercel.app/me", { withCredentials: true })
+    axios.get("https://stock-trading-backend-nu.vercel.app/me", { withCredentials: true })
       .then((res) => {
         setUser(res.data.user);
         setChecking(false);

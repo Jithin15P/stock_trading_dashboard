@@ -2,7 +2,7 @@ import axios from 'axios';
  
 const api = axios.create({
   
-  baseURL: 'https://stock-trading-backend-pi.vercel.app/', 
+  baseURL: 'https://stock-trading-backend-nu.vercel.app/', 
 });
 
  
