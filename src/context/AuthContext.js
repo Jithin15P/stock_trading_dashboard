@@ -1,9 +1,11 @@
- import React, { createContext, useState, useEffect } from 'react';
+ // dashboard/src/context/AuthContext.js
+
+import React, { createContext, useState, useEffect } from 'react';
 
 // --- Configuration ---
-// CORRECTED: Pointing to your backend on port 3002
-const API_URL = 'https://stock-trading-backend-pi.vercel.app/api/auth';
-const LOGIN_URL = 'https://stock-trading-frontend-phi.vercel.app/login';
+// Make sure these URLs are correct for your live, deployed applications
+const API_URL = 'https://stock-trading-backend-nu.vercel.app/api/auth'; 
+const LOGIN_URL = 'https://stock-trading-frontend-phi.vercel.app/login'; 
 
 const AuthContext = createContext();
 
@@ -16,11 +18,11 @@ export const AuthProvider = ({ children }) => {
             const token = localStorage.getItem('token');
             if (token) {
                 try {
-                    
+                    // --- THIS IS THE CRITICAL FIX ---
+                    // This fetch call sends the token in the correct header format
                     const response = await fetch(`${API_URL}/verify`, {
                         method: 'GET',
                         headers: {
-                            
                             'Authorization': `Bearer ${token}`
                         },
                     });
@@ -28,27 +30,27 @@ export const AuthProvider = ({ children }) => {
                     const userData = await response.json();
 
                     if (response.ok) {
-                         
+                        // Success! Token is valid. Set the user state.
                         setUser(userData);
                     } else {
-                         
-                        console.error("Token verification failed:", userData.message);
+                        // The backend rejected the token. It's invalid or expired.
+                        console.error("Dashboard: Token verification failed:", userData.message);
                         localStorage.removeItem('token');
                         window.location.href = LOGIN_URL;
                     }
                 } catch (error) {
-                    
-                    console.error("An error occurred during token verification:", error);
+                    // A network error occurred.
+                    console.error("Dashboard: An error occurred during token verification:", error);
                     localStorage.removeItem('token');
                     window.location.href = LOGIN_URL;
                 }
             }
-            
+            // If there's no token, or after verification, stop showing "Loading..."
             setLoading(false);
         };
 
         verifyUser();
-    }, []);  
+    }, []); // The empty array ensures this runs only once when the dashboard loads.
 
     const logOut = () => {
         setUser(null);
