@@ -4,7 +4,7 @@ import React, { createContext, useState, useEffect } from 'react';
 
 // --- Configuration ---
 // Make sure these URLs are correct for your live, deployed applications
-const API_URL = 'https://stock-trading-backend-nu.vercel.app/api/auth'; 
+const API_URL = 'https://stock-trading-backend-gi24.onrender.com'; 
 const LOGIN_URL = 'https://stock-trading-frontend-phi.vercel.app/login'; 
 
 const AuthContext = createContext();
