@@ -1,24 +1,14 @@
- import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import Dashboard from "./Dashboard";
 
 const Homee = () => {
-  const [user, setUser] = useState(null);
-  const [checking, setChecking] = useState(true);
-
-  useEffect(() => {
-    axios.get("https://stock-trading-backend-gi24.onrender.com/me", { withCredentials: true })
-      .then((res) => {
-        setUser(res.data.user);
-        setChecking(false);
-      })
-      .catch(() => {
-        
-        window.location.href = "https://stock-trading-frontend-mti8.onrender.com/login";
-      });
-  }, []);
-
-  if (checking) return <h3>Checking authentication...</h3>;
+  // This component no longer performs any authentication checks.
+  // Authentication is handled entirely by:
+  // - AuthContext
+  // - PrivateRoute
+  // - AuthHandler (token extraction)
+  //
+  // Homee's job is ONLY to render the Dashboard after the user is authenticated.
 
   return <Dashboard />;
 };
