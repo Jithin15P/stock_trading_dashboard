@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
                 try {
                     // --- THIS IS THE CRITICAL FIX ---
                     // This fetch call sends the token in the correct header format
-                    const response = await fetch(`${API_URL}/verify`, {
+                   const response = await fetch(`${API_URL}/api/auth/verify`, {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`
