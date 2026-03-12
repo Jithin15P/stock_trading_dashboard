@@ -7,14 +7,14 @@ const Homee = () => {
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
-    axios.get("https://stock-trading-backend-nu.vercel.app/me", { withCredentials: true })
+    axios.get("https://stock-trading-backend-gi24.onrender.com/me", { withCredentials: true })
       .then((res) => {
         setUser(res.data.user);
         setChecking(false);
       })
       .catch(() => {
         
-        window.location.href = "https://stock-trading-frontend-phi.vercel.app/login";
+        window.location.href = "https://stock-trading-frontend-mti8.onrender.com/login";
       });
   }, []);
 
