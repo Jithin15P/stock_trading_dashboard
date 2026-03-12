@@ -12,7 +12,7 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleBuyClick = () => {
-    axios.post("https://stock-trading-backend-pi.vercel.app/newOrder", {
+    axios.post("https://stock-trading-backend-gi24.onrender.com/newOrder", {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,
