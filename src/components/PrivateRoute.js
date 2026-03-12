@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
 
      
-    const LOGIN_URL = 'https://stock-trading-frontend-phi.vercel.app/login';
+    const LOGIN_URL = 'https://stock-trading-frontend-mti8.onrender.com/login';
 
      
     if (loading) {
